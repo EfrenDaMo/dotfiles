@@ -18,4 +18,7 @@ A repo with my .dotfiles to keep workspace consistent
 - Neovim
 - tmux
 - Kitty
+- Font
+- Oh my posh
+- Neofetch
 
