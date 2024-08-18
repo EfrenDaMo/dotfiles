@@ -55,13 +55,16 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# Aliase
+# Aliases
 alias clear='clear && neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off'
 alias ls='ls --color'
 alias v='fd --type f --hidden --exclude .git | fzf-tmux --preview="bat --color=always {}" -p --reverse | xargs nvim'
 
 # show neofetch on startup 
 neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off
+
+export DENO_INSTALL="/home/Efren/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Shell integrations
 eval "$(fzf --zsh)"
