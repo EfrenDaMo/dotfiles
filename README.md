@@ -14,18 +14,13 @@ Make sure you have the correspondng packages installed for the configurations yo
 That being said here is a list of all the configurations in the repo:
 
 - Zsh
-
 - Neovim
-
 - tmux
-
 - Kitty
-
 - Font
-
 - Oh my posh
-
 - Neofetch
+- Kanata
 
 ## Requirements for installation 
 
