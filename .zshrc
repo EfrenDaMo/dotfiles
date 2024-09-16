@@ -59,6 +59,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias clear='clear && neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off'
 alias ls='ls --color'
 alias v='fd --type f --hidden --exclude .git | fzf-tmux --preview="bat --color=always {}" -p --reverse | xargs nvim'
+alias knvim='NVIM_APPNAME="nvim-kickstart" nvim'
 
 # show neofetch on startup 
 neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off
@@ -72,3 +73,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
