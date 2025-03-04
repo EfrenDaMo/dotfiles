@@ -31,15 +31,15 @@
 
 (deftemplate charmod (char mod)
   (switch 
-    ((key-timing 3 less-than 325)) $char break
-    () (tap-hold-release-timeout 225 500 $char $mod $char) break
+    ((key-timing 3 less-than 250)) $char break
+    () (tap-hold-release-timeout 200 500 $char $mod $char) break
   )
 )
 
 (defalias
-  caps (tap-hold 200 200 esc lctl)
-  lalt (tap-hold 200 200 ret lalt)
-  ralt (tap-hold 200 200 ret rctl)
+  caps (t! charmod esc lctl)
+  lalt (t! charmod ret lalt)
+  ralt (t! charmod ret rctl)
   a (t! charmod a lsft)
   s (t! charmod s lctl)
   d (t! charmod d lalt)

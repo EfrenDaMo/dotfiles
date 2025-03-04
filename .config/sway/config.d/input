@@ -1,0 +1,17 @@
+# General input config
+input * {
+	accel_profile flat
+	xkb_numlock enabled
+	xkb_layout "us,latam"
+	xkb_options "grp:alt_space_toggle"
+}
+
+# Touchpad config
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+	dwt enabled
+	tap enabled
+	tap_button_map lrm
+	natural_scroll enabled
+	middle_emulation enabled
+}
+

@@ -1,0 +1,91 @@
+configuration {
+	display-drun: "Apps: ";
+	display-emoji: "Emoji: ";
+	display-window: "Windows: ";
+	modi: "window,run,drun,emoji";
+	font: "0xproto Nerd Font Medium 15";
+	terminal: "ghostty";
+	drun-display-format: "{icon} {name}";
+
+	// Vim keybindings
+	kb-row-up: "Up,Shift+Tab,Alt+k";
+	kb-row-down: "Down,Alt+j";
+	kb-accept-entry: "Alt+y,Return";
+
+	// Icons
+	show-icons: true;
+	icon-theme: "Papirus";
+}
+
+@theme "/dev/null"
+
+* {
+	bg: #2b303b80;
+	bg-alt: #a7bece80;
+	bg-selected: #a7bece;
+
+	fg: #FFFFFF;
+	fg-alt: #333333;
+
+	border: 0;
+	margin: 0;
+	padding: 0;
+	spacing: 0;
+}
+
+window {
+	width: 50%;
+	background-color: @bg;
+}
+
+element {
+	padding: 8 12;
+	text-color: @fg;
+	background-color: transparent;
+}
+
+element selected {
+	text-color: @fg-alt;
+	background-color: @bg-selected;
+}
+
+element-text {
+	text-color: inherit;
+	vertical-align: 0.5;
+	background-color: transparent;
+}
+
+element-icon {
+	size: 30;
+	padding: 0 10 0 0;
+	background-color: transparent;
+}
+
+entry {
+	padding: 12;
+	text-color: @fg-alt;
+	background-color: @bg-alt;
+}
+
+inputbar {
+	children: [prompt, entry];
+	background-color: @bg-alt;
+}
+
+listview {
+	lines: 6;
+	columns: 1;
+	background-color: @bg;
+}
+
+mainbox {
+	background-color: @bg;
+	children: [inputbar, listview];
+}
+
+prompt {
+	enabled: true;
+	padding: 12 0 0 12;
+	text-color: @fg-alt;
+	background-color: @bg-alt;
+}

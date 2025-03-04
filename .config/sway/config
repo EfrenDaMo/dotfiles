@@ -1,0 +1,5 @@
+# Config for sway(fx)
+
+# Imports for config, from user directory
+include $HOME/.dotfiles/.config/sway/config.d/*
+include /etc/sway/config.d/*

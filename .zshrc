@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -32,8 +34,6 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Keybindings
 bindkey '^[f' autosuggest-accept
-bindkey '^[k' history-search-backward
-bindkey '^[j' history-search-forward
 
 # History
 HISTSIZE=5000
@@ -55,25 +55,81 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+show_fetch() {
+	fastfetch
+	printf "\n"
+}
+
+clear() {
+	command clear
+	fastfetch
+}
+
 # Aliases
-alias clear='clear && neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off'
-alias ls='ls --color'
-alias v='fd --type f --hidden --exclude .git | fzf-tmux --preview="bat --color=always {}" -p --reverse | xargs nvim'
-alias knvim='NVIM_APPNAME="nvim-kickstart" nvim'
+# alias clear='clear && neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off'
+# alias ls='ls --color'
+alias ls='lsd -a'
+alias ts='tmux-sessionizer'
 
 # show neofetch on startup 
-neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off
+#neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off 
+##show_neofetch
+show_fetch
 
+# IDK whats happening here, something with path
 export DENO_INSTALL="/home/Efren/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export PATH=$PATH:/home/Efren/Programming/Bash/tmux-sessionizer
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
-
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+conda() {
+	unfunction conda
+
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	__conda_setup="$('/usr/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
+	else
+		if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+			. "/usr/etc/profile.d/conda.sh"
+		else
+			export PATH="/usr/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
+	
+	conda "$@"
+}
+
+# Define additional conda commands that should also trigger initialization
+activate() {
+  conda activate "$@"
+}
+deactivate() {
+  conda deactivate "$@"
+}
+
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+#zprof
