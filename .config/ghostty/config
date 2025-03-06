@@ -1,7 +1,7 @@
 # Sets theme as tokyonight
-theme = tokyonight
+theme = tokyonight_moon
 # theme = /home/Efren/.cache/wal/colors-ghostty
-background-opacity = .7
+background-opacity = .6
 
 # Fonts config
 font-size = 11
@@ -27,7 +27,6 @@ gtk-wide-tabs = false
 gtk-tabs-location = bottom
 
 # Keybindings
-keybind = clear
 
 # move around
 keybind = alt+shift+k=goto_split:top

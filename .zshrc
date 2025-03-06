@@ -81,7 +81,10 @@ export DENO_INSTALL="/home/Efren/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
 export PATH=$PATH:/home/Efren/Programming/Bash/tmux-sessionizer
+export PATH=$PATH:/home/Efren/Downloads/AM2RLauncher_2.3.0_lin
+
 export EDITOR=nvim
 export VISUAL=nvim
 

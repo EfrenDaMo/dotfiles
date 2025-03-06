@@ -195,7 +195,7 @@ bindsym --to-code {
 # Screenshots manager stuff
 bindsym --to-code {
 	# Basic
-	Print exec grim - | wl-copy
+	Print exec grim
 
 	# with area selection
 	CTRL+Print exec grim -g "$(slurp)"

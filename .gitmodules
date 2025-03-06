@@ -1,3 +1,6 @@
 [submodule ".config/.config/nvim.bak"]
 	path = .config/.config/nvim.bak
 	url = https://github.com/EfrenDaMo/nvim.bak.git
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/EfrenDaMo/nvim.git

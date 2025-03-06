@@ -19,6 +19,5 @@ shadow_blur_radius 20
 #gaps outer 4px
 
 # set wallpaper
-#exec swww img $HOME/Programming/Bash/wallpaper-changer/Wallpapers/wallpaper1.jpg
 exec swww-daemon -f xrgb
 exec waypaper --restore
