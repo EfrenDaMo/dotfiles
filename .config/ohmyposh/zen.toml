@@ -1,19 +1,8 @@
-#console_title_template = '{{ .Shell }} in {{ .Folder }}'
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
 version = 3
 final_space = true
-
-[secondary_prompt]
-template = '❯❯ '
-foreground = 'magenta'
-background = 'transparent'
-
-[transient_prompt]
-template = '❯ '
-background = 'transparent'
-foreground_templates = [
-	'{{if gt .Code 0}}red{{end}}',
-	'{{if eq .Code 0}}magenta{{end}}',
-]
+#console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
 [[blocks]]
 type = 'prompt'
@@ -21,26 +10,25 @@ alignment = 'left'
 newline = true
 
 [[blocks.segments]]
-template = '{{ .Path }}'
-foreground = 'blue'
-background = 'transparent'
 type = 'path'
 style = 'plain'
+foreground = 'blue'
+background = 'transparent'
+template = '{{ .Path }}'
 
 [blocks.segments.properties]
-cache_duration = 'none'
 style = 'full'
 
 [[blocks.segments]]
-template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
-foreground = 'p:grey'
-background = 'transparent'
 type = 'git'
 style = 'plain'
+foreground = 'p:grey'
+background = 'transparent'
+template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
 
 [blocks.segments.properties]
+--branch_icon = ' '
 branch_icon = ''
-cache_duration = 'none'
 commit_icon = '@'
 fetch_status = true
 
@@ -49,14 +37,13 @@ type = 'rprompt'
 overflow = 'hidden'
 
 [[blocks.segments]]
-template = '{{ .FormattedMs }}'
-foreground = 'yellow'
-background = 'transparent'
 type = 'executiontime'
 style = 'plain'
+foreground = 'yellow'
+background = 'transparent'
+template = '{{ .FormattedMs }}'
 
 [blocks.segments.properties]
-cache_duration = 'none'
 threshold = 5000
 
 [[blocks]]
@@ -67,42 +54,45 @@ newline = true
 [[blocks.segments]]
 type = 'text'
 style = 'plain'
-foreground = "cyan"
+foreground = 'cyan'
 background = 'transparent'
-template = "{{ .UserName }}"
+template = '{{ .UserName }}'
 
-[blocks.segments.properties]
-cache_duration = 'none'
 
 [[blocks.segments]]
 type = 'text'
 style = 'plain'
-foreground = "green"
+foreground = 'green'
 background = 'transparent'
-template = "@"
-
-[blocks.segments.properties]
-cache_duration = 'none'
+template = '@'
 
 [[blocks.segments]]
 type = 'text'
 style = 'plain'
-foreground = "cyan"
+foreground = 'cyan'
 background = 'transparent'
-template = "{{ .HostName }}"
+template = '{{ .HostName }}'
 
-[blocks.segments.properties]
-cache_duration = 'none'
 
 [[blocks.segments]]
-template = " ❯"
-background = 'transparent'
 type = 'text'
 style = 'plain'
 foreground_templates = [
 	'{{if gt .Code 0}}red{{end}}',
 	'{{if eq .Code 0}}magenta{{end}}',
 ]
+background = 'transparent'
+template = ' '
 
-[blocks.segments.properties]
-cache_duration = 'none'
+[transient_prompt]
+template = ' '
+background = 'transparent'
+foreground_templates = [
+	'{{if gt .Code 0}}red{{end}}',
+	'{{if eq .Code 0}}magenta{{end}}',
+]
+
+[secondary_prompt]
+template = ' '
+foreground = 'magenta'
+background = 'transparent'

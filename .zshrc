@@ -34,6 +34,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Keybindings
 bindkey '^[f' autosuggest-accept
+bindkey -s '^[t' 'tmux a\n'
 
 # History
 HISTSIZE=5000
@@ -52,8 +53,8 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd --color $realpath'
 
 show_fetch() {
 	fastfetch
@@ -68,7 +69,7 @@ clear() {
 # Aliases
 # alias clear='clear && neofetch --ascii_distro arch_small --cpu_speed off --cpu_cores off'
 # alias ls='ls --color'
-alias ls='lsd -a'
+alias ls='lsd -A'
 alias ts='tmux-sessionizer'
 
 # show neofetch on startup 
@@ -82,8 +83,10 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+export PATH=$PATH:/home/Efren/Programming/Odin/ols
 export PATH=$PATH:/home/Efren/Programming/Bash/tmux-sessionizer
 export PATH=$PATH:/home/Efren/Downloads/AM2RLauncher_2.3.0_lin
+export PATH=$PATH:/home/Efren/Downloads/zig-linux-x86_64-0.14.0
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -136,3 +139,12 @@ function y() {
 }
 
 #zprof
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/Efren/.opam/opam-init/init.zsh' ]] || source '/home/Efren/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration

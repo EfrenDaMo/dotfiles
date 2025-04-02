@@ -15,3 +15,8 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 	middle_emulation enabled
 }
 
+
+seat "*" {
+    hide_cursor 3000
+    hide_cursor when-typing enable
+}

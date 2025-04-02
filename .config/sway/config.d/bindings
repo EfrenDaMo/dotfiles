@@ -50,7 +50,7 @@ bindsym --to-code {
 	$mod+e exec $file
 
 	# Exit sway
-	$mod+Shift+e exec swaymsg exit
+    $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 }
 floating_modifier $mod normal
 
@@ -214,4 +214,6 @@ bindsym --to-code {
 
 	# Run Godot
 	$mod+g exec godot-mono --rendering-driver opengl3
+
+	$mod+Shift+s exec waypaper
 }

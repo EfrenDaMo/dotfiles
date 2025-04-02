@@ -1,6 +1,7 @@
 {
 	"layer": "bottom",
-	"position": "bottom",
+	"position": "top",
+	//"position": "bottom",
 	"modules-left": [
 		"sway/workspaces",
 		"tray",
@@ -19,6 +20,14 @@
 		"battery",
 		"clock"
 	],
+	"sway/workspaces": {
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": []
+		}
+	},
 	"sway/window": {
 		"max-length": 50
 	},
@@ -66,7 +75,7 @@
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "Connected  ",
+		"format-wifi": "{essid}  ",
 		"format-ethernet": "Connected  ",
 		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
 		"format-linked": "{ifname} (No IP) ⚠",

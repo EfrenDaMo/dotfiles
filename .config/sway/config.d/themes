@@ -21,3 +21,8 @@ shadow_blur_radius 20
 # set wallpaper
 exec swww-daemon -f xrgb
 exec waypaper --restore
+
+# custom cursor 
+seat seat0 xcursor_theme "Banana-Tokyo-Night-Storm" 32
+exec gsettings set org.gnome.desktop.interface cursor-theme "Banana-Tokyo-Night-Storm"
+exec gsettings set org.gnome.desktop.interface cursor-size 32
