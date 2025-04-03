@@ -1,5 +1,345 @@
 # Config for sway(fx)
 
-# Imports for config, from user directory
-include $HOME/.dotfiles/.config/sway/config.d/*
+# Font
+font pango:0xProto Nerd Font 10
+
+# Borders
+default_border none
+default_floating_border none
+
+# Corners
+smart_corner_radius enable
+corner_radius 15
+
+# Shadows
+shadows enable
+shadows_on_csd enable
+shadow_blur_radius 20
+
+# Gaps
+#gaps inner 4px
+#gaps outer 4px
+
+# set wallpaper
+exec swww-daemon -f xrgb
+exec waypaper --restore
+
+# custom cursor 
+#seat seat0 xcursor_theme "Banana-Tokyo-Night-Storm" 32
+#exec gsettings set org.gnome.desktop.interface cursor-theme "Banana-Tokyo-Night-Storm"
+#exec gsettings set org.gnome.desktop.interface cursor-size 32
+
+# waybar blur
+layer_effects "waybar" {
+	blur enable;
+	blur_xray enable;
+	#blur_ignore_transperant enable;
+	#corner_radius 20;
+}
+
+# rofi blur
+layer_effects "rofi" {
+	blur enable;
+	blur_xray enable;
+	shadows enable;
+	corner_radius 20;
+}
+
+layer_effects "swaync" {
+	blur enable;
+	blur_xray enable;
+	shadows enable;
+}
+
+# General blur
+blur enable
+blur_xray disable
+blur_passes 4
+blur_radius 4
+
+# General input config
+input * {
+	accel_profile flat
+	xkb_numlock enabled
+	xkb_layout "us,latam"
+	xkb_options "grp:alt_space_toggle"
+}
+
+# Touchpad config
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+	dwt enabled
+	tap enabled
+	tap_button_map lrm
+	natural_scroll enabled
+	middle_emulation enabled
+}
+
+
+seat "*" {
+    hide_cursor 3000
+    hide_cursor when-typing enable
+}
+
+# Keybindings
+# Sets super key: windows key
+set $mod Mod4
+
+# Home row direction keys, like in vim
+set $up k
+set $left h
+set $down j
+set $right l
+
+# Set prefered apps
+
+# Terminal
+set $term ghostty
+set $term-float floating $term
+
+# Browser
+set $browser zen-browser
+
+# Menus
+set $menu rofi
+set $drun $menu -show drun
+set $wmenu $menu -show window
+#set $emenu $menu -show emoji
+set $dmenu $menu -dmenu
+
+# Filemanager
+set $file nemo
+
+# Basic keybinds
+bindsym --to-code {
+	# Reload config
+	$mod+Shift+c reload
+
+	# Start terminal or floating terminal
+	$mod+Return exec $term
+	$mod+Shift+Return exec $term-float
+
+	# Kill focused window
+	$mod+shift+q kill
+
+	# Menus
+	$mod+d exec $drun
+	$mod+CTRl+e exec $emenu
+	$mod+Shift+w exec $wmenu
+	$mod+c exec cliphist list | $dmenu | cliphist decode | wl-copy
+
+	# Start file manager
+	$mod+e exec $file
+
+	# Exit sway
+    $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+}
+floating_modifier $mod normal
+
+# Moving around
+bindsym --to-code {
+	# Move your focus around
+	$mod+$up focus up
+	$mod+$left focus left
+	$mod+$down focus down
+	$mod+$right focus right
+
+	# Or use $mod+[up|down|left|right]
+	$mod+Up focus up
+	$mod+Left focus left
+	$mod+Down focus down
+	$mod+Right focus right
+
+	# Move the focused window with the same, but add Shift
+	$mod+Shift+$left move left
+	$mod+Shift+$down move down
+	$mod+Shift+$up move up
+	$mod+Shift+$right move right
+
+	# Ditto, with arrow keys
+	$mod+Shift+Left move left
+	$mod+Shift+Down move down
+	$mod+Shift+Up move up
+	$mod+Shift+Right move right
+}
+
+# Workspaces stuff
+bindsym --to-code {
+	# Switch to workspace
+	$mod+1 workspace number 1
+	$mod+2 workspace number 2
+	$mod+3 workspace number 3
+	$mod+4 workspace number 4
+	$mod+5 workspace number 5
+	$mod+6 workspace number 6
+	$mod+7 workspace number 7
+	$mod+8 workspace number 8
+	$mod+9 workspace number 9
+	$mod+0 workspace number 10
+
+	# Move focused container to workspace
+	$mod+Shift+1 move container to workspace number 1
+	$mod+Shift+2 move container to workspace number 2
+	$mod+Shift+3 move container to workspace number 3
+	$mod+Shift+4 move container to workspace number 4
+	$mod+Shift+5 move container to workspace number 5
+	$mod+Shift+6 move container to workspace number 6
+	$mod+Shift+7 move container to workspace number 7
+	$mod+Shift+8 move container to workspace number 8
+	$mod+Shift+9 move container to workspace number 9
+}
+
+# Layout stuff
+bindsym --to-code {
+	# Change the split type
+	$mod+b splith
+	$mod+v splitv
+
+	# Change the layout style
+	$mod+w layout tabbed
+	$mod+s layout stacking
+	$mod+u layout toggle split
+
+	# Fullscreen
+	$mod+f fullscreen
+
+	# Make focused window floating
+	$mod+Shift+space floating toggle
+
+	# Change between floating and tiling windows
+	$mod+space focus mode_toggle
+
+	# Focus to parent container
+	$mod+a focus parent
+}
+
+# Scratchpad stuff
+bindsym --to-code {
+	$mod+Shift+minus move scratchpad
+	$mod+minus scratchpad show
+}
+
+# Resizing containers
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+	bindsym --to-code {
+		# Shrink with vim keys
+		$left resize shrink width 10px
+		$down resize grow height 10px
+		$up resize shrink height 10px
+		$right resize grow width 10px
+                               
+		# Ditto, with arrow keys
+		Left resize shrink width 10px
+		Down resize grow height 10px
+		Up resize shrink height 10px
+		Right resize grow width 10px
+                               
+		# Return to default mode
+		Return mode "default"
+		Escape mode "default"
+	}
+}
+bindsym --to-code $mod+r mode "resize"
+
+# Resizing floating containers with mouse wheel
+bindsym --to-code  --whole-window --border {
+	$mod+button5 resize grow height 10 px or 10 ppt
+	$mod+button4 resize shrink height 10 px or 10 ppt
+
+	$mod+shift+button5 resize grow width 10 px or 10 ppt
+	$mod+shift+button4 resize shrink width 10 px or 10 ppt
+}
+
+# Disable touch pad
+bindsym --to-code F5 input "2:7:SynPS/2_Synaptics_TouchPad" events toggle enabled disabled
+
+# Basic controls for audio, brightness and media
+bindsym --to-code {
+	# Brightness control
+	XF86MonBrightnessDown exec brightnessctl set 10%-
+	XF86MonBrightnessUp exec brightnessctl set +10%
+	
+	# Audio control
+	XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+
+	XF86AudioLowerVolume exec wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-
+	XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+	
+	# Play control
+	XF86AudioPlay exec playerctl play-pause  
+	XF86AudioNext exec playerctl next 
+	XF86AudioPrev exec playerctl previous
+}
+
+# Screenshots manager stuff
+bindsym --to-code {
+	# Basic
+	Print exec grim
+
+	# with area selection
+	CTRL+Print exec grim -g "$(slurp)"
+
+	# current window (pos and size)
+	ALT+Print exec grimshot save active
+}
+
+# Special apps
+bindsym --to-code {
+	# Run Packet tracer
+	$mod+p exec packettracer
+
+	# Show notification panel
+	$mod+Shift+n exec swaync-client -t -sw
+
+	# Run Godot
+	$mod+g exec godot-mono --rendering-driver opengl3
+
+	$mod+Shift+s exec waypaper
+}
+
+# Auto Start Apps
+# Idle settings
+exec swayidle -w \
+         timeout 1200 'swaylock' \
+         timeout 1800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock'
+
+# Notificacion manager
+exec swaync
+
+# Network manager applet
+exec nm-applet --indicator
+
+# Enables autotiling
+exec autotiling
+
+# Watch copy history
+# exec swaymsg 'workspace 1; exec wl-paste --watch cliphist store'
+
+# Start apps
+exec swaymsg 'workspace 4; exec nemo'
+exec swaymsg 'workspace 2; exec ghostty'
+exec swaymsg 'workspace 1; exec zen-browser'
+
+# set swaybar as bar
+#bar {
+	#swaybar_command waybar
+#}
+
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
 include /etc/sway/config.d/*
