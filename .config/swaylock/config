@@ -8,7 +8,7 @@ datestr=%a,%e of %B
 
 # Sets the background
 #screenshots
-image=~/.dotfiles/.config/swaylock/wallpapers/current
+image=~/dotfiles/.config/swaylock/wallpapers/current
 
 # Fade in time
 fade-in=1

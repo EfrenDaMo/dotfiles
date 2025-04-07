@@ -259,8 +259,8 @@ bindsym --to-code F5 input "2:7:SynPS/2_Synaptics_TouchPad" events toggle enable
 # Basic controls for audio, brightness and media
 bindsym --to-code {
 	# Brightness control
-	XF86MonBrightnessDown exec brightnessctl set 10%-
-	XF86MonBrightnessUp exec brightnessctl set +10%
+	XF86MonBrightnessDown exec brightnessctl set 5%-
+	XF86MonBrightnessUp exec brightnessctl set +5%
 	
 	# Audio control
 	XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+
@@ -324,22 +324,22 @@ exec swaymsg 'workspace 2; exec ghostty'
 exec swaymsg 'workspace 1; exec zen-browser'
 
 # set swaybar as bar
-#bar {
-	#swaybar_command waybar
-#}
-
 bar {
-    position top
+	swaybar_command waybar
+}
+
+#bar {
+    #position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+    #colors {
+    #    statusline #ffffff
+    #    background #323232
+    #    inactive_workspace #32323200 #32323200 #5c5c5c
+    #}
+#}
 
 include /etc/sway/config.d/*

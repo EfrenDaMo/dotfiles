@@ -1,8 +1,8 @@
 configuration {
 	display-drun: "Apps: ";
-	display-emoji: "Emoji: ";
+	//display-emoji: "Emoji: ";
 	display-window: "Windows: ";
-	modi: "window,run,drun,emoji";
+	modi: "window,run,drun";
 	font: "0xproto Nerd Font Medium 15";
 	terminal: "ghostty";
 	drun-display-format: "{icon} {name}";

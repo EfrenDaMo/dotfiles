@@ -6,12 +6,12 @@
 			"left": 1,
 			"right": 3
 		},
-		"source": "~/.dotfiles/.config/fastfetch/fastfetch.jpg",
-		"width": 44,
-		"height": 22
+		"source": "~/dotfiles/.config/fastfetch/fastfetch.jpg",
+		"width": 42,
+		"height": 21
 	},
 	"display": {
-		"separator": " => ",
+		"separator": " > ",
 		"color": {
 			"separator": "magenta"
 		}
@@ -113,12 +113,6 @@
 			"format": "{size-used} / {size-total}"
 		},
 		{
-			"type": "disk",
-			"key": "{#1}│  - {#keys}󰋊 Disk (Home)",
-			"folders": "/home",
-			"format": "{size-used} / {size-total}"
-		},
-		{
 			"type": "custom",
 			"format": "{#1}│"
 		},
@@ -135,7 +129,7 @@
 		// Footer
 		{
 			"type": "custom",
-			"format": "{#1}╰─────────────────────────────────────────────────────"
+			"format": "{#1}╰──────────────────────────────────────────────────────"
 		}
 	]
 }
