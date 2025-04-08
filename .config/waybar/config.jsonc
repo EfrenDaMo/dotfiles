@@ -15,7 +15,7 @@
 		"sway/window"
 	],
 	"modules-right": [
-		//"mpd",
+		"mpd",
 		"mpris",
 		//"custom/media",
 		"group/control-center",
@@ -30,9 +30,7 @@
 		"persistent-workspaces": {
 			"1": [],
 			"2": [],
-			"3": [],
 			"4": [],
-			"5": []
 		}
 	},
 	"sway/scratchpad": {
@@ -58,7 +56,8 @@
 		"max-length": 50,
 		"rewrite": {
 			"zen": "Zen Browser",
-			"com.mitchellh.ghostty": "Ghostty"
+			"com.mitchellh.ghostty": "Ghostty",
+            "org.gnome.Terminal": "Terminal"
 		}
 	},
 	"mpd": {
@@ -89,8 +88,8 @@
 	},
 	"mpris": {
 		"interval": 1,
-		"format": "<span color='#cdd6f4'>{status_icon}  Playing</span>",
-		"format-paused": "<span color='#9da6c4'>{status_icon}  Paused</span>",
+		"format": "<span color='#cdd6f4'>{status_icon} Playing</span>",
+		"format-paused": "<span color='#9da6c4'>{status_icon} Paused</span>",
 		"on-click": "playerctl play-pause",
 		"on-scroll-up": "playerctl next",
 		"on-scroll-down": "playerctl previous",
@@ -122,10 +121,10 @@
 	},
 	"backlight": {
 		"scroll-step": 5,
-		"format": " {percent}% {icon}",
-		"format-icons": ["󰃞 ", "󰃟 ", "󰃝 ", "󰃠 "],
+		"format": "{percent}% {icon}",
+		"format-icons": ["󰃞", "󰃟", "󰃝", "󰃠"],
 		"tooltip": true,
-		"tooltip-format": "  Brightness:  \n  {percent}% {icon} "
+		"tooltip-format": " Brightness: \n {percent}% {icon} "
 	},
 	"cpu": {
 		"format": "{usage}% 󰻠"
@@ -144,18 +143,18 @@
 		"format": "{icon}",
 		"format-wifi": "{icon}",
 		"interval": 5,
-		"format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤢 ", "󰤨 "],
-		"format-ethernet": " ",
-		"tooltip-format-wifi": "  Network:  \n  Wi-Fi speed: |  {bandwidthDownBytes} |  {bandwidthUpBytes} |\n {icon}  {essid} via {ipaddr}@{gwaddr}  󰊗 ",
-		"tooltip-format-ethernet": "  Network:  \n  Ethernet speed: |  {bandwidthDownBytes} |  {bandwidthUpBytes} |\n    connected via {ipaddr}@{gwaddr}  󰊗 ",
-		"format-linked": "Disconnected ⚠",
-		"format-disconnected": "Disconnected ⚠",
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤢", "󰤨"],
+		"format-ethernet": "",
+		"tooltip-format-wifi": "  Network:  \n  Wi-Fi speed: |  {bandwidthDownBytes} |  {bandwidthUpBytes} |\n  {icon} {essid} via {ipaddr}@{gwaddr} 󰊗 ",
+		"tooltip-format-ethernet": "  Network:  \n  Ethernet speed: |  {bandwidthDownBytes} |  {bandwidthUpBytes} |\n   connected via {ipaddr}@{gwaddr} 󰊗 ",
+		"format-linked": "",
+		"format-disconnected": "",
 		"format-alt": "{ipaddr}/{cidr}"
 	},
 	"wireplumber": {
 		"format": "{icon}",
 		"format-muted": "󰖁",
-		"tooltip-format": "  Volume:  \n  {volume}% {icon}  ",
+		"tooltip-format": " Volume: \n {volume}% {icon} ",
 		"on-click": "helvum",
 		"format-icons": ["", "", "󰕾",""]
 	},
@@ -165,7 +164,7 @@
 			"warning": 60,
 			"critical": 20
 		},
-		"format": "{icon}",
+		"format": "{capacity}% {icon}",
 		"tooltip": "  Battery:  \n  {icon} {capacity}%  ",
 		"format-tooltip": "  Battery:  \n  {icon} {capacity}%  ",
 		"format-tooltip-full": "  Battery:  \n  {icon} {capacity}%  ",
@@ -204,7 +203,7 @@
 	"clock": {
 		"interval": 1,
 		"timezone": "Mexico/General",
-		"format": " {:%I:%M %p}  ",
+		"format": "{:%I:%M %p} ",
 		"tooltip-format": "<big>{:%a %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
 		"format-alt": " {:%m/%d/%Y}  "
 	},
