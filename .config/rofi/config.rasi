@@ -1,8 +1,8 @@
 configuration {
 	display-drun: "Apps: ";
-	//display-emoji: "Emoji: ";
+	display-emoji: "Emoji: ";
 	display-window: "Windows: ";
-	modi: "window,run,drun";
+	modi: "window,run,drun,emoji";
 	font: "0xproto Nerd Font Medium 15";
 	terminal: "ghostty";
 	drun-display-format: "{icon} {name}";
@@ -20,12 +20,12 @@ configuration {
 @theme "/dev/null"
 
 * {
-	bg: #2b303b80;
-	bg-alt: #a7bece80;
-	bg-selected: #a7bece;
+	bg: #22243680;
+	bg-alt: #2d3f7680;
+	bg-selected: #2d3f7680;
 
-	fg: #FFFFFF;
-	fg-alt: #333333;
+	fg: #c8d3f5;
+	fg-alt: #FFFFFF;
 
 	border: 0;
 	margin: 0;
