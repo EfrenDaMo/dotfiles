@@ -37,9 +37,6 @@ set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
 set -g fish_pager_color_selected_background --background=$selection
 
-# Set key binds
-bind \ef accept-autosuggestion
-
 # Set abbreviations
 abbr -a g git
 abbr -a gst "git status"
@@ -47,12 +44,24 @@ abbr -a gc "git commit"
 abbr -a gp "git push"
 abbr -a gl "git pull"
 abbr -a gf "git fetch"
+abbr -a ts "tmux-sessionizer"
+
+# Set key binds
+bind \ef accept-autosuggestion
+bind \et "tmux a"
+bind \cf tmux-sessionizer
 
 # Set envs
 set -Ux EDITOR nvim
+set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
+set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on'
+set -gx _JAVA_TOOL_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
 
 # Set aliases
 alias ls="lsd -A"
+alias vi="nvim"
+alias grep="rg"
+alias cat="bat"
 
 # Init the apps
 oh-my-posh init fish --config ~/.config/ohmyposh/zen.toml | source
@@ -61,5 +70,17 @@ zoxide init --cmd cd fish | source
 
 if status is-interactive
 	# Run on start up
-	fastfetch
+    set terminal_type (fastfetch | rg "Terminal" | sed -n 's/.*Terminal => //p')
+    if test "$terminal_type" != "tmux"
+        fastfetch
+    end
 end
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/efren/.opam/opam-init/init.fish' && source '/home/efren/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+# END opam configuration
