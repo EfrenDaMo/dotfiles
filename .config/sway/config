@@ -76,8 +76,8 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 
 
 seat "*" {
-    hide_cursor 3000
-    hide_cursor when-typing enable
+    #hide_cursor 3000
+    #hide_cursor when-typing enable
 }
 
 # Keybindings
@@ -94,7 +94,9 @@ set $right l
 
 # Terminal
 set $term ghostty
-set $term-float floating $term
+set $alt-term kitty
+set $alt-term2 gnome-terminal
+set $alt-term3 alacritty
 
 # Browser
 set $browser zen-browser
@@ -103,7 +105,7 @@ set $browser zen-browser
 set $menu rofi
 set $drun $menu -show drun
 set $wmenu $menu -show window
-#set $emenu $menu -show emoji
+set $emenu $menu -show emoji
 set $dmenu $menu -dmenu
 
 # Filemanager
@@ -116,7 +118,9 @@ bindsym --to-code {
 
 	# Start terminal or floating terminal
 	$mod+Return exec $term
-	$mod+Shift+Return exec $term-float
+	$mod+Shift+Return exec $alt-term
+	$mod+Ctrl+Shift+Return exec $alt-term2
+    $mod+Ctrl+Return exec $alt-term3
 
 	# Kill focused window
 	$mod+shift+q kill
@@ -124,11 +128,14 @@ bindsym --to-code {
 	# Menus
 	$mod+d exec $drun
 	$mod+CTRl+e exec $emenu
-	$mod+Shift+w exec $wmenu
+    $mod+Shift+w exec $wmenu
 	$mod+c exec cliphist list | $dmenu | cliphist decode | wl-copy
 
 	# Start file manager
 	$mod+e exec $file
+
+    # Start browser
+    $mod+w exec $browser
 
 	# Exit sway
     $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -186,6 +193,7 @@ bindsym --to-code {
 	$mod+Shift+7 move container to workspace number 7
 	$mod+Shift+8 move container to workspace number 8
 	$mod+Shift+9 move container to workspace number 9
+	$mod+Shift+0 move container to workspace number 10
 }
 
 # Layout stuff
@@ -195,7 +203,7 @@ bindsym --to-code {
 	$mod+v splitv
 
 	# Change the layout style
-	$mod+w layout tabbed
+	$mod+t layout tabbed
 	$mod+s layout stacking
 	$mod+u layout toggle split
 
@@ -275,21 +283,18 @@ bindsym --to-code {
 
 # Screenshots manager stuff
 bindsym --to-code {
-	# Basic
-	Print exec grim
+    # current window (pos and size)
+	Print exec grimshot save active
 
 	# with area selection
 	CTRL+Print exec grim -g "$(slurp)"
 
-	# current window (pos and size)
-	ALT+Print exec grimshot save active
+    # Basic
+	ALT+Print exec grim 
 }
 
 # Special apps
 bindsym --to-code {
-	# Run Packet tracer
-	$mod+p exec packettracer
-
 	# Show notification panel
 	$mod+Shift+n exec swaync-client -t -sw
 
@@ -299,11 +304,15 @@ bindsym --to-code {
 	$mod+Shift+s exec waypaper
 }
 
+for_window [class="^.*-.*"] floating enable
+for_window [class="sun-awt-X11-XDialog"] floating enable
+for_window [class="sun-awt-X11-XFileDialog"] floating enable
+
 # Auto Start Apps
 # Idle settings
 exec swayidle -w \
          timeout 1200 'swaylock' \
-         timeout 1800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 1300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock'
 
 # Notificacion manager
@@ -315,8 +324,11 @@ exec nm-applet --indicator
 # Enables autotiling
 exec autotiling
 
+# Enable stuff for netbeans
+exec wmname LG3D &
+
 # Watch copy history
-# exec swaymsg 'workspace 1; exec wl-paste --watch cliphist store'
+exec swaymsg 'workspace 1; exec wl-paste --watch cliphist store'
 
 # Start apps
 exec swaymsg 'workspace 4; exec nemo'
@@ -328,18 +340,7 @@ bar {
 	swaybar_command waybar
 }
 
-#bar {
-    #position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    #colors {
-    #    statusline #ffffff
-    #    background #323232
-    #    inactive_workspace #32323200 #32323200 #5c5c5c
-    #}
-#}
+# Enables tablet driver on login
+exec systemctl --user start opentabletdriver.service
 
 include /etc/sway/config.d/*
