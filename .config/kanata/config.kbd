@@ -1,0 +1,24 @@
+;; Kanata remaps less goo gonna start out simple to avoid overly complex movements for now
+;; Remaping 
+;; CAPS LOCK to be esc
+;; Left alt to be enter on tap and alt on hold
+;; Right alt to be enter on tap and ctrl on hold
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+ caps
+ lalt ralt
+)
+
+(deflayer default
+ esc
+ @lalt @ralt
+)
+
+(defalias
+ lalt (tap-hold 200 200 ret lalt)
+ ralt (tap-hold 200 200 ret rctl)
+)

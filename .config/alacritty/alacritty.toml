@@ -1,0 +1,17 @@
+[general]
+import = ["./themes/tokyo_moon.toml"]
+
+[terminal]
+shell = "/usr/bin/nu"
+
+[window]
+opacity = 0.5
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "0xproto Nerd Font"
