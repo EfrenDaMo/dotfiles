@@ -7,7 +7,6 @@ timestr=%I:%M %p
 datestr=%a,%e of %B
 
 # Sets the background
-#screenshots
 image=~/dotfiles/.config/swaylock/wallpapers/current
 
 # Fade in time
@@ -25,35 +24,34 @@ indicator-thickness=20
 indicator-caps-lock
 
 # Define all colors
-
-key-hl-color=00000066
+key-hl-color=82aaffCC
 separator-color=00000000
 
-inside-color=00000033
-inside-clear-color=ffffff00
-inside-caps-lock-color=ffffff00
-inside-ver-color=ffffff00
-inside-wrong-color=ffffff00
+inside-color=444a73AA
+inside-clear-color=c7fb6d88
+inside-caps-lock-color=ffc77788
+inside-ver-color=86e1fc88
+inside-wrong-color=ff757fCC
 
-ring-color=ffffff
-ring-clear-color=ffffff
-ring-caps-lock-color=ffffff
-ring-ver-color=ffffff
-ring-wrong-color=ffffff
+ring-color=c8d3f5
+ring-clear-color=c7fb6d
+ring-caps-lock-color=ffc777
+ring-ver-color=86e1fc
+ring-wrong-color=ff757f
 
 line-color=00000000
-line-clear-color=ffffffFF
-line-caps-lock-color=ffffffFF
-line-ver-color=ffffffFF
-line-wrong-color=ffffffFF
+line-clear-color=c7fb6dFF
+line-caps-lock-color=ffc777FF
+line-ver-color=86e1fcFF
+line-wrong-color=ff757fFF
 
-text-color=ffffff
-text-clear-color=ffffff
-text-ver-color=ffffff
-text-wrong-color=ffffff
+text-color=c8d3f5
+text-clear-color=c7fb6d
+text-ver-color=86e1fc
+text-wrong-color=ff757f
 
-bs-hl-color=ffffff
-caps-lock-key-hl-color=ffffffFF
-caps-lock-bs-hl-color=ffffffFF
+bs-hl-color=ff757f
+caps-lock-key-hl-color=ffc777FF
+caps-lock-bs-hl-color=ffc777FF
 disable-caps-lock-text
-text-caps-lock-color=ffffff
+text-caps-lock-color=ffc777
