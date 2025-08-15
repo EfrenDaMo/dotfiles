@@ -1,15 +1,18 @@
 # Set Folke's tokyo night moon as theme
 theme = /home/efren/dotfiles/.config/ghostty/themes/tokyonight_moon
 
+# set fish as ghostty specific shell
+command = /usr/bin/fish
+
 # Set transparency
 background-opacity = .5
 
 # Font config
 font-size = 13
 font-family = 0xProto Nerd Font
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+#font-feature = -calt
+#font-feature = -liga
+#font-feature = -dlig
 
 # Mouse config
 mouse-hide-while-typing = true
