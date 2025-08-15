@@ -11,7 +11,7 @@
 		"height": 21
 	},
 	"display": {
-		"separator": " > ",
+		"separator": " => ",
 		"color": {
 			"separator": "magenta"
 		}
@@ -53,10 +53,6 @@
 		{
 			"type": "custom",
 			"format": "{#1}│ {#}Desktop Environment:"
-		},
-		{
-			"type": "de",
-			"key": "{#1}│  - {#keys}󰧨 DE"
 		},
 		{
 			"type": "wm",
