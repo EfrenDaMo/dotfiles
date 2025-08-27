@@ -57,11 +57,15 @@ set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
 set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on'
 set -gx _JAVA_TOOL_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
 
+set -U fish_user_paths '/home/efren/.config/emacs/bin/' $fish_user_paths
+
 # Set aliases
 alias ls="lsd -A"
 alias vi="nvim"
 alias grep="rg"
 alias cat="bat"
+alias find="fd"
+alias emcs="doom emacs -nw"
 
 # Init the apps
 oh-my-posh init fish --config ~/.config/ohmyposh/zen.toml | source
