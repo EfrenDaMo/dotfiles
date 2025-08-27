@@ -1,0 +1,115 @@
+.start-menu-container {
+  color: $foreground;
+  background-color: $background;
+  padding: 10px;
+
+  border: 1px solid;
+  border-color: $foreground;
+  border-radius: 15px;
+}
+
+
+.shutdown-e:hover .shutdown {
+  margin: 0px 2px;
+  padding-left: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.shutdown {
+  margin: 0px 2px;
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.reboot-e:hover .reboot {
+  margin: 0px 2px;
+  padding-left: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.reboot {
+  margin: 0px 2px;
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.logout-e:hover .logout {
+  margin: 0px 2px;
+  padding-left: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.logout {
+  margin: 0px 2px;
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.lockscr-e:hover .lockscr {
+  margin: 0px 2px;
+  padding-left: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.lockscr {
+  margin: 0px 2px;
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.sleep-e:hover .sleep {
+  margin: 0px 2px;
+  padding-left: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.sleep {
+  margin: 0px 2px;
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}

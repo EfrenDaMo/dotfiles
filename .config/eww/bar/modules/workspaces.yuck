@@ -1,0 +1,16 @@
+(deflisten workspace_info
+  :initial `(box :halign 'start' :orientation 'h' (eventbox :class "workspace-e" :cursor "pointer" :onclick "hyprctl dispatch workspace 1" (label :class "workspace-active" :text "一"))(eventbox :class "workspace-e" :cursor "pointer" :onclick "hyprctl dispatch workspace 2" (label :class "workspace" :text "二"))(eventbox :class "workspace-e" :cursor "pointer" :onclick "hyprctl dispatch workspace 4" (label :class "workspace" :text "四")))`
+  `./bar/scripts/workspaces.sh`
+)
+
+(defwidget workspaces []
+  (box 
+    :class "workspace-container"
+    :hexpand false
+    :halign "start"
+    :orientation "h"
+    (literal 
+      :content "${workspace_info}"
+    )
+  )
+)

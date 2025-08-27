@@ -1,0 +1,320 @@
+(defwindow control-center
+  :monitor 0
+  :stacking "fg"
+  :namespace "control-center"
+  :geometry (geometry
+    :y "5px"
+    :x "5px"
+    :width "450px"
+    :height "300px"
+    :anchor "top right"
+  )
+  (box
+    (revealer
+      :reveal conrev
+      :duration "100ms"
+      :transition "slidedown"
+      (control-center)
+    )
+  )
+)
+
+(defvar conrev false)
+
+(defwidget control-center []
+  (eventbox
+    :onhoverlost "./bar/popup-menus/scripts/toggle-control-center.sh"
+    (box
+      :class "control-center-container"
+      :hexpand false
+      :orientation "v"
+      :space-evenly false
+
+      (box
+        :class "top-section"
+        :halign "fill"
+        :orientation "h"
+
+        (box
+          :orientation "v"
+          :space-evenly false
+
+          (box
+            :class "brightness-slider-container"
+            :halign "fill"
+            :orientation "h"
+            :space-evenly false
+            (eventbox
+              :width 40
+              :cursor "grab" 
+              :tooltip "${brightness_info.percent}%"
+              :onscroll "brightnessctl set $([ '{}' = 'up' ] && echo '5%-' || echo '+5%')"
+              (box
+                :class "brightness-labels"
+                :orientation "v"
+                (label :text "${brightness_info.icon} ")
+                (label :text "${brightness_info.percent}%")
+              )
+            )
+            (scale 
+              :min 1
+              :max 101
+              :class "brightness-slider"
+              :value {brightness_info.percent}
+              :hexpand true
+              :onchange "brightnessctl set {}%"
+              :round-digits 0
+            )
+          )
+          (box
+            :class "volume-slider-container"
+            :halign "fill"
+            :orientation "h"
+            :space-evenly false
+            :tooltip "${volume_info.percent}"
+            (eventbox
+              :cursor "pointer" 
+              :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+              (box
+                :width 40
+                :class "volume-labels"
+                :orientation "v"
+                (label :text "${volume_info.icon} ")
+                (label :text "${volume_info.percent}")
+              )
+            )
+            (scale 
+              :min 0
+              :max 101
+              :value {volume_info.percentage}
+              :class "volume-slider"
+              :hexpand true
+              :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ \"{}%\""
+              :round-digits 0
+            )
+          )
+        )
+      )
+      (box
+        :class "center-section"
+        :halign "fill"
+        :orientation "h"
+
+        (box
+          :class "network-indicator-container"
+          :halign "start"
+          :orientation "v"
+
+          (label :class "label" :halign "start" :text "Connected via ${network_info.icon} ${network_info.name}")
+          (label :class "label" :halign "start" :text "Info:")
+          (box
+            :orientation "h"
+            :space-evenly false
+            (label :class "label" :halign "start" :text "⠀⠀Ip:⠀")
+            (label :class "info"  :halign "start" :text "${network_info.address}")
+          )
+          (box
+            :orientation "h"
+            :space-evenly false
+            (label :class "label" :halign "start" :text "⠀⠀Gateway: ")
+            (label :class "info" :halign "start" :text "${network_info.gateway}")
+          )
+          (label :class "label" :halign "start" :text "Speed:")
+          (box
+            :orientation "h"
+            :space-evenly false
+            (label :class "label" :halign "start" :text "⠀⠀Upload: ")
+            (label :class "info" :halign "start" :text " ${system_info.network.upload}")
+          )
+          (box
+            :orientation "h"
+            :space-evenly false
+            (label :class "label" :halign "start" :text "⠀⠀Download: ")
+            (label :class "info" :halign "start" :text " ${system_info.network.download}")
+          )
+        )
+      )
+      (box
+        :class "bottom-section"
+        :halign "fill"
+        :hexpand true
+        :orientation "v"
+
+        (box
+          :orientation "h"
+          :halign "start"
+          :space-evenly false
+
+          (box
+            :class "indicator-container"
+            :vexpand false
+            :orientation "v"
+            :space-evenly false
+
+            (box
+              :class "cpu-information"
+              :orientation "h"
+              (box
+                :class "information-container"
+                :halign "center"
+                :orientation "v"
+
+                (label :text " ")
+                (label :text "${system_info.cpu.percent}%")
+                (label :text "${system_info.cpu.frequency}")
+              )
+              (box
+                :class "cpu-usage-bar"
+                :space-evenly false
+
+                (scale 
+                  :class "system-indicator-bar"
+                  :min 0
+                  :max 100
+                  :tooltip "${system_info.cpu.usage.core0}%"
+                  :value {system_info.cpu.usage.core0}
+                  :flipped true
+                  :active false
+                  :orientation "v"
+                )
+                (scale 
+                  :class "system-indicator-bar"
+                  :min 0
+                  :max 100
+                  :tooltip "${system_info.cpu.usage.core1}%"
+                  :value {system_info.cpu.usage.core1}
+                  :flipped true
+                  :active false
+                  :orientation "v"
+                )
+                (scale 
+                  :class "system-indicator-bar"
+                  :min 0
+                  :max 100
+                  :tooltip "${system_info.cpu.usage.core2}%"
+                  :value {system_info.cpu.usage.core2}
+                  :flipped true
+                  :active false
+                  :orientation "v"
+                )
+                (scale 
+                  :class "system-indicator-bar"
+                  :min 0
+                  :max 100
+                  :tooltip "${system_info.cpu.usage.core3}%"
+                  :value {system_info.cpu.usage.core3}
+                  :flipped true
+                  :active false
+                  :orientation "v"
+                )
+              )
+            )
+          )
+          (box
+            :class "indicator-container"
+            :hexpand true
+            :orientation "v"
+            :space-evenly true
+
+            (box
+              :class "ram-information"
+              :orientation "h"
+              :space-evenly false
+              (box
+                :class "information-container"
+                :halign "center"
+                :orientation "v"
+                (label :text " ")
+                (label :text "${system_info.ram.percent}%")
+                (label :text "${system_info.ram.usage}/${system_info.ram.max}GB")
+              )
+              (box
+                :class "ram-usage-bar"
+
+                (scale 
+                  :class "system-indicator-bar"
+                  :min 0
+                  :max 100
+                  :value {system_info.ram.percent}
+                  :flipped true
+                  :active false
+                  :orientation "v"
+                )
+              )
+            )
+          )
+          (box
+            :class "indicator-container"
+            :vexpand false
+            :orientation "v"
+            :space-evenly false
+
+            (box
+              :class "temp-information"
+              :orientation "h"
+              :space-evenly false
+
+              (box
+                :class "information-container"
+                :halign "center"
+                :orientation "v"
+
+                (label :text "")
+                (label :text "${system_info.temp.celcius}°C")
+                (label :halign "start" :text "${system_info.temp.fahrenheit}°F")
+              )
+              (box
+                :class "temp-usage-bar"
+
+                (scale 
+                  :min 30
+                  :max 90
+                  :class "system-indicator-bar"
+                  :value {system_info.temp.celcius}
+                  :active false
+                  :flipped true
+                  :orientation "v"
+                )
+              )
+            )
+          )
+          (box
+            :class "indicator-container"
+            :vexpand false
+            :orientation "v"
+            :space-evenly false
+
+            (box
+              :class "bat-information"
+              :orientation "h"
+              :space-evenly false
+
+              (box
+                :class "information-container"
+                :halign "center"
+                :orientation "v"
+
+                (label :text "${battery_info.icon}")
+                (label :text "${battery_info.percent}")
+                (label :text "${battery_info.status}")
+              )
+              (box
+                :class "bat-usage-bar"
+
+                (scale 
+                  :min 0
+                  :max 100
+                  :class "system-indicator-bar"
+                  :value {battery_info.percentage}
+                  :active false
+                  :flipped true
+                  :orientation "v"
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)

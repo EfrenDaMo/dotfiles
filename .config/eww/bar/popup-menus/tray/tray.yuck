@@ -1,0 +1,41 @@
+(defwindow tray
+  :monitor 0
+  :stacking "fg"
+  :namespace "tray"
+  :geometry (geometry
+    :y "5px"
+    :x "180px"
+    :width  "30%"
+    :height "20px"
+    :anchor "top right"
+  )
+  (box
+    :halign "end"
+    :space-evenly false
+    (revealer
+      :reveal trarev
+      :duration "50ms"
+      :transition "slidedown"
+      (tray)
+    )
+  )
+)
+
+(defvar trarev false)
+
+(defwidget tray []
+  (eventbox
+    :onhoverlost "./bar/popup-menus/scripts/toggle-tray.sh"
+    (box
+      :class "tray-container"
+      :orientation "h"
+      :space-evenly false
+      (systray 
+        :halign "center"
+        :spacing 8
+        :hexpand true
+        :icon-size 22
+      )
+    )
+  )
+)

@@ -1,0 +1,84 @@
+.media-center-container {
+  color: $foreground;
+  padding: 10px;
+  background-color: $background;
+
+  border: 1px solid;
+  border-color: $foreground;
+  border-radius: 15px;
+}
+
+.album_art {
+  min-width: 330px;
+  min-height: 188px;
+  border-radius: 14px;
+  background-size: cover;
+}
+
+.cava {
+  margin-top: 10px;
+}
+
+scale {
+  margin-top: 10px;
+  min-width: 150px;
+  min-height: 10px;
+}
+
+scale trough {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+scale highlight {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+scale slider {
+  min-width: 0px;
+  min-height: 0px;
+  border-radius: 0%;
+  background-color: transparent;
+}
+
+.prev-button {
+  margin: 0px 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+
+  .prev-label {
+    font-size: 20px;
+  }
+}
+
+.play-button {
+  margin: 0px 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+
+  .play-label {
+    font-size: 15px;
+  }
+}
+
+.next-button {
+  margin: 0px 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+
+  .next-label {
+    font-size: 20px;
+  }
+}

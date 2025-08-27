@@ -1,0 +1,186 @@
+.control-center-container {
+  color: $foreground;
+  padding: 10px;
+  background-color: $background;
+
+  border: 1px solid;
+  border-color: $foreground;
+  border-radius: 15px;
+}
+
+.top-section {
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+scale.brightness-slider {
+  min-width: 150px;
+  min-height: 10px;
+}
+
+scale.brightness-slider trough {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+scale.brightness-slider highlight {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: $yellow2;
+}
+
+scale.brightness-slider slider {
+  min-width: 10px;
+  min-height: 10px;
+
+  border-radius: 50%;
+  background-color: $foreground;
+}
+
+.brightness-labels {
+  color: $yellow;
+}
+
+scale.volume-slider {
+  min-width: 150px;
+  min-height: 20px;
+}
+
+scale.volume-slider trough {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+scale.volume-slider highlight {
+  min-height: 10px;
+  border-radius: 5px;
+  background-color: $light-blue2;
+}
+
+scale.volume-slider slider {
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  background-color: $foreground;
+}
+
+.volume-labels {
+  color: $light-blue;
+}
+
+.center-section {
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.label {
+  color: $green;
+}
+
+.info {
+  color: $purple;
+}
+
+.bottom-section {
+  padding: 10px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.indicator-container {
+  padding: 0px 5px;
+  margin-right: 5px;
+}
+
+.information-container {
+  margin-right: 5px;
+}
+
+.cpu-information {
+  .information-container {
+    color: $red;
+  }
+}
+
+.cpu-usage-bar {
+  padding-left: 5px;
+
+  scale.system-indicator-bar highlight {
+    background-color: $red2;
+  }
+}
+
+.ram-information {
+  .information-container {
+    color: $blue;
+  }
+}
+
+.ram-usage-bar {
+  scale.system-indicator-bar highlight {
+    background-color: $blue2;
+  }
+}
+
+.temp-information {
+  .information-container {
+    color: $green;
+  }
+}
+
+.temp-usage-bar {
+  scale.system-indicator-bar highlight {
+    background-color: $green2;
+  }
+}
+
+.bat-information {
+  .information-container {
+    color: $purple;
+  }
+}
+
+.bat-usage-bar {
+  scale.system-indicator-bar highlight {
+    background-color: $purple2;
+  }
+}
+
+scale.system-indicator-bar {
+  min-width: 15px;
+  min-height: 20px;
+}
+
+scale.system-indicator-bar trough {
+  min-width: 10px;
+  border-radius: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+scale.system-indicator-bar highlight {
+  min-width: 10px;
+  border-radius: 1px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+scale.system-indicator-bar slider {
+  min-width: 0px;
+  min-height: 0px;
+  border-radius: 0%;
+  background-color: $foreground;
+}

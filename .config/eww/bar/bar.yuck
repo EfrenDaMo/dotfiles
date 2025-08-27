@@ -1,0 +1,128 @@
+(include "./bar/modules/tray.yuck")
+(include "./bar/modules/clock.yuck")
+(include "./bar/modules/language.yuck")
+(include "./bar/modules/workspaces.yuck")
+(include "./bar/modules/start-menu.yuck")
+(include "./bar/modules/media-center.yuck")
+(include "./bar/modules/notifications.yuck")
+(include "./bar/modules/control-center.yuck")
+
+; Listeners for scripts
+(deflisten get_user
+  :initial ""
+  "whoami"
+)
+
+(deflisten volume_info 
+  :initial '{"icon": "", "percent": "100%", "percentage": 100}'
+  "./bar/scripts/audio.sh listen"
+)
+(deflisten battery_info 
+  :initial '{"icon": "󰁹", "percent": "100%", "percentage": 100, "status": "Full"}' 
+  "./bar/scripts/battery.sh listen"
+)
+(deflisten brightness_info 
+  :initial '{"icon": "󰃠", "percent": 100}'
+  "./bar/scripts/brightness.sh listen"
+)
+(deflisten media_info 
+  :initial '{"status": "No players found", "name": "-----", "artist": "-----", "icon": "", "length": "--:--", "label": "Not Playing 󰎇"}' 
+  "./bar/scripts/media.sh listen"
+)
+(deflisten player_info 
+  :initial '{"position": "--:--", "progress": 0}' 
+  "./bar/scripts/player.sh listen"
+)
+(deflisten network_info
+  :initial '{"state": "ethernet", "icon": "", "name": "Ethernet", "address": "192.168.0.29", "gateway": "192.168.0.1"}'
+  "./bar/scripts/network.sh listen"
+)
+(deflisten system_info 
+  :initial '{"cpu": {"percent": 0, "frequency": "0.00 GHz", "usage": {"core0": 0, "core1": 0, "core2": 0, "core3": 0}}, "ram": {"usage": "0.00", "max": "11", "percent": 0}, "temp": {"celcius": --, "fahrenheit": ---}, "network": {"upload": "- B/s", "download": "- B/s"}}'
+  "./bar/scripts/system.sh listen"
+)
+
+(defwindow bar
+  :monitor 0
+  :stacking "fg"
+  :namespace "bar"
+  :exclusive true
+  :geometry (geometry 
+    :anchor "top center"
+    :x "0px"
+    :y "5px"
+    :width "99.2%"
+    :height "25px"
+  )
+  (box
+    (revealer
+      :transition "slidedown"
+      :reveal barrev
+      :duration "200ms"
+      (bar)
+    )
+  )
+)
+
+(defvar barrev true)
+
+(defwidget bar []
+  (box 
+    :class "bar-contents"
+    :orientation "h"
+    :space-evenly false
+
+    (box 
+      :width 200
+      :class "module-container"
+      :halign "start"
+      :valign "center"
+        :hexpand false
+      (box
+        :class "module-left"
+        :spacing 5
+        :hexpand false
+        :space-evenly false
+        (start-menu)
+        (workspaces)
+      )
+    ) 
+
+    (box
+      :class "module-spacer"
+      :halign "center"
+      :valign "center"
+      :hexpand true
+    )
+
+    (box 
+      :class "module-container"
+      :halign "center"
+      :valign "center"
+      :hexpand true
+      (box
+        :class "module-center"
+        :spacing 10
+        :space-evenly false
+        (media-center-label)
+      )
+    ) 
+
+    (box 
+      :class "module-container"
+      :halign "end"
+      :valign "center"
+      :hexpand true
+      (box
+        :class "module-right"
+        :spacing 10
+        :space-evenly false
+        (language)
+        (tray-box)
+        (control-center-label)
+        (clock)
+        (notifications)
+      )
+    )
+  ) 
+)

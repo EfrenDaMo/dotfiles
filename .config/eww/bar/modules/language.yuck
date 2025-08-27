@@ -1,0 +1,20 @@
+(defpoll get_layout 
+  :interval "1s" 
+  "hyprctl devices -j | jq -r \".keyboards[4].active_keymap\" | cut -d\" \" -f1 | cut -c1-2"
+)
+
+(defwidget language []
+  (box
+    :class "language"
+    :orientation "h"
+    :space-evenly false
+    (eventbox 
+      :cursor "pointer" 
+      :onclick "hyprctl switchxkblayout kanata next"
+      (label 
+        :text {get_layout}
+        :class "language-text" 
+      )
+    )
+  )
+)

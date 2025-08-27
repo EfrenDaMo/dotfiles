@@ -1,0 +1,12 @@
+(defwidget start-menu []
+  (box
+    :class "start-menu-label" 
+    (eventbox 
+      :cursor "pointer" 
+      :onclick "./bar/popup-menus/scripts/toggle-start-menu.sh" 
+      (label 
+        :text "󰣇 "
+      )
+    )
+  )
+)

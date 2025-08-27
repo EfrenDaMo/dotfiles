@@ -1,0 +1,31 @@
+$background: #222436;
+$background-transparent: rgba(#222436, 0.50);
+$foreground: #c8d3f5;
+$foreground-transparent: rgba(#c8d3f5, 0.50);
+$selection-background: #2d3f76;
+$selection-foreground: #c8d3f5;
+$black: #1b1d2b;
+$red: #ff757f;
+$green: #c7fb6d;
+$yellow: #ffc777;
+$blue: #82aaff;
+$purple: #c099ff;
+$light-blue: #86e1fc;
+$gray: #828bb8;
+$dark-gray: #444a73;
+$red2: #ff8d94;
+$green2: #c3e88d;
+$yellow2: #ffd8ab;
+$blue2: #9ab8ff;
+$purple2: #caabff;
+$light-blue2: #b2ebff;
+$white: #c8d3f5;
+
+* {
+  all: unset;
+  font-size: 13px;
+  font-weight: 800;
+  font-family: "0xproto Nerd Font";
+}
+
+@import "./bar/bar.scss";

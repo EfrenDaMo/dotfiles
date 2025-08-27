@@ -1,0 +1,10 @@
+(defwidget tray-box []
+  (eventbox 
+    :cursor "pointer" 
+    :onclick "./bar/popup-menus/scripts/toggle-tray.sh" 
+    (label 
+      :text " "
+      :class "tray-label" 
+    )
+  )
+)

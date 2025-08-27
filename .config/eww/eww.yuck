@@ -1,0 +1,7 @@
+(include "./bar/bar.yuck")
+
+(include "./bar/popup-menus/tray/tray.yuck")
+(include "./bar/popup-menus/calender/calender.yuck")
+(include "./bar/popup-menus/start-menu/start-menu.yuck")
+(include "./bar/popup-menus/control-center/control-center.yuck")
+(include "./bar/popup-menus/media-center/media-center.yuck")

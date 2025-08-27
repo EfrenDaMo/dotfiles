@@ -1,0 +1,22 @@
+(deflisten notification_info 
+  :initial '{"text": "0", "alt": "none", "tooltip": "", "class": "none"}' 
+  "swaync-client -swb"
+)
+
+(defwidget notifications []
+  (eventbox
+    :cursor "pointer"
+    :onclick "swaync-client -t"
+    :onrightclick "swaync-client -d"
+    (box 
+      :class "notifications"
+      :orientation "h"
+      :space-evenly false 
+      (label 
+        :text {notification_info.alt == "dnd-notification" || notification_info.alt == "dnd-none" ? 
+          "󱏨 " : (notification_info.text == "0" ? "󰂜 " : "󰅸 ")}
+        :class "notification-text"
+      )
+    )
+  )
+)

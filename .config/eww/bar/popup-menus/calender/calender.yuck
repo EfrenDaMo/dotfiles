@@ -1,0 +1,59 @@
+(defwindow calender
+  :monitor 0
+  :stacking "fg"
+  :namespace "calender"
+  :geometry (geometry
+    :y "5px"
+    :x "5px"
+    :width  "10%"
+    :height "150px"
+    :anchor "top right"
+  )
+  (box
+    :halign "end"
+    :space-evenly false
+    (revealer
+      :reveal calrev
+      :duration "200ms"
+      :transition "slideleft"
+      (calender)
+    )
+  )
+)
+
+(defvar calrev false)
+
+(defpoll get_date
+  :interval "1m"
+  "date +'%A, %d/%m/%Y'"
+)
+
+(defwidget calender []
+  (eventbox
+	:onhoverlost "./bar/popup-menus/scripts/toggle-cal.sh"
+    (box
+      :class        "cal-container"
+      :orientation   "v"
+      :space-evenly  false
+
+      (box
+        :class        "time-box"
+        :halign       "center"
+        :orientation  "v"
+        :space-evenly false
+
+        (box
+          :class "date-inner"
+          (label :text "${get_date}")
+        )
+      )
+
+      (box
+        :class "calendar-box"
+        :halign "center"
+
+        (calendar :class "cal")
+      )
+    )
+  )
+)

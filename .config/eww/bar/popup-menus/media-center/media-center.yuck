@@ -1,0 +1,136 @@
+(defwindow media-center
+  :monitor 0
+  :stacking "fg"
+  :namespace "media-center"
+  :geometry (geometry
+    :y "5px"
+    :width "45%"
+    :height "30%"
+    :anchor "top center"
+  )
+  (box
+    :space-evenly false
+    (revealer
+      :halign "fill"
+      :reveal medrev
+      :hexpand true
+      :duration "100ms"
+      :transition "slidedown"
+      (media-center)
+    )
+  )
+)
+
+(defvar medrev false)
+
+(deflisten cava :initial "" `./bar/scripts/cava.sh`)
+
+(defwidget media-center []
+  (eventbox
+    :onhoverlost "./bar/popup-menus/scripts/toggle-media-center.sh"
+    (box
+      :class "media-center-container"
+      :orientation "v"
+      :space-evenly false
+      (box
+        :orientation "h"
+        :space-evenly false
+        (box
+		  :class "album_art"
+          :hexpand false
+          :vexpand false
+          :style 'background-image: url("${media_info.art}");'
+        )
+        (box
+          :hexpand true
+        )
+        (box
+          :orientation "v"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          (box
+            "${media_info.name}"
+          )
+          (box
+            "${media_info.artist}"
+          )
+        )
+        (box
+          :hexpand true
+        )
+      )
+      ;(box
+      ;  (label :text "${cava}" :class "cava")
+      ;)
+      (box
+        :orientation "v"
+        (box
+          :halign "fill"
+          :hexpand true
+          (scale
+            :min 0
+            :max 100
+            :value {player_info.progress}
+            :orientation "h"
+            :active false
+          )
+        )
+        (box
+          :orientation "v"
+          (box
+            (label :text "${player_info.position}" :halign "start")
+            (label :text "${media_info.length}" :halign "end")
+          )
+        )
+      )
+      (box
+        :orientation "h"
+        (box)
+        (box)
+        (box)
+        (eventbox 
+          :cursor "pointer" 
+          :onclick "playerctl previous" 
+
+          (box
+            :class "prev-button"
+
+            (label 
+              :class "prev-label"
+              :text "󰒮"
+            )
+          )
+        )
+        (eventbox 
+          :cursor "pointer" 
+          :onclick "playerctl play-pause" 
+
+          (box
+            :class "play-button"
+            (label 
+              :class "play-label"
+              :text "${media_info.icon}"
+            )
+          )
+        )
+        (eventbox 
+          :cursor "pointer" 
+          :onclick "playerctl previous" 
+
+          (box
+            :class "next-button"
+
+            (label 
+              :class "next-label"
+              :text "󰒭"
+            )
+          )
+        )
+        (box)
+        (box)
+        (box)
+      )
+    )
+  )
+)

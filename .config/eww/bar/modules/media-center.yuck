@@ -1,0 +1,10 @@
+(defwidget media-center-label []
+  (eventbox 
+    :cursor "pointer" 
+    :onclick "./bar/popup-menus/scripts/toggle-media-center.sh" 
+    (box
+      :class "media-center-label"
+      (label :text "${media_info.label}")
+    )
+  )
+)

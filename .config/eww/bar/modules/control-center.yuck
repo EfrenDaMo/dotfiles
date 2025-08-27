@@ -1,0 +1,33 @@
+(defwidget control-center-label []
+  (eventbox 
+    :cursor "pointer" 
+    :onclick "./bar/popup-menus/scripts/toggle-control-center.sh" 
+    (box 
+      :class "control-center-label"
+      (network-label)
+      (volume-label)
+      (battery-label)
+    )
+  )
+)
+
+(defwidget network-label []
+  (box
+    :class "network-label"
+    (label :class "network-icon" :text "${network_info.icon} ")
+  )
+)
+
+(defwidget volume-label []
+  (box 
+    :class "volume-label"
+    (label :class "volume-icon" :text "${volume_info.icon}")
+  )
+)
+
+(defwidget battery-label []
+  (box 
+    :class "battery-label"
+    (label :class "battery-icon" :text "${battery_info.icon}")
+  )
+)

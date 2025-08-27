@@ -1,0 +1,132 @@
+@import "./popup-menus/tray/tray.scss";
+@import "./popup-menus/calender/calender.scss";
+@import "./popup-menus/start-menu/start-menu.scss";
+@import "./popup-menus/control-center/control-center.scss";
+@import "./popup-menus/media-center/media-center.scss";
+
+.bar {
+  color: $foreground;
+  background-color: $background-transparent;
+  padding: 3px 10px;
+
+  border: 1px solid;
+  border-color: $foreground-transparent;
+  border-radius: 15px;
+}
+
+.start-menu-label {
+  padding-left: 7px;
+  padding-right: 1px;
+  color: $blue;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.workspace {
+  margin: 0px 3px;
+  padding: 0px 5px;
+  min-width: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.workspace-active {
+  margin: 0px 3px;
+  padding: 0px 5px;
+  min-width: 5px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.workspace-e:hover .workspace {
+  padding: 0px 5px;
+  margin: 0px 3px;
+  color: $selection-background;
+  background-color: $selection-foreground;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.media-center-label {
+  padding: 0px 5px;
+  min-width: 5px;
+  color: $red;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.language {
+  padding: 0px 5px;
+  color: $green2;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.tray-label {
+  padding-left: 5px;
+  color: $red2;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.control-center-label {
+  padding-left: 5px;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.network-label {
+  color: $green;
+}
+
+.volume-label {
+  color: $light-blue;
+}
+
+.battery-label {
+  color: $purple;
+}
+
+.clock {
+  padding: 0px 5px;
+  color: $light-blue2;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
+
+.notifications {
+  padding-left: 5px;
+  color: $white;
+  background-color: $selection-background;
+
+  border: 1px solid;
+  border-color: transparent;
+  border-radius: 15px;
+}
