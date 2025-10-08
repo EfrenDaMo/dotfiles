@@ -1,0 +1,6 @@
+require("lukastk.configs.autocmd")
+require("lukastk.configs.globals")
+require("lukastk.configs.keymaps")
+require("lukastk.configs.options")
+require("lukastk.configs.lsps")
+require("lukastk.configs.lazy")
