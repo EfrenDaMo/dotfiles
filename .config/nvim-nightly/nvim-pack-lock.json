@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "version": "2.0.0 - 3.0.0"
+    },
+    "blink.cmp": {
+      "version": ">=0.0.0"
+    },
+    "colorful-menu.nvim": [],
+    "conform.nvim": [],
+    "fidget.nvim": [],
+    "friendly-snippets": [],
+    "gitsigns.nvim": [],
+    "mason.nvim": [],
+    "nvim-linefly": [],
+    "nvim-lspconfig": [],
+    "nvim-origami": [],
+    "nvim-treesitter": {
+      "version": "'master'"
+    },
+    "snacks.nvim": [],
+    "tmux-navigator": [],
+    "tokyonight": [],
+    "undotree": []
+  }
+}
