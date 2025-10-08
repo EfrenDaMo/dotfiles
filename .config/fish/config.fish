@@ -44,7 +44,7 @@ abbr -a gc "git commit"
 abbr -a gp "git push"
 abbr -a gl "git pull"
 abbr -a gf "git fetch"
-abbr -a ts "tmux-sessionizer"
+abbr -a ts tmux-sessionizer
 
 # Set key binds
 bind \ef accept-autosuggestion
@@ -53,14 +53,15 @@ bind \cf tmux-sessionizer
 
 # Set envs
 set -Ux EDITOR nvim
+set -Ux ANDROID_HOME /opt/android-sdk
 set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
 set -gx _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on'
 set -gx _JAVA_TOOL_OPTIONS '-Dawt.useSystemAAFontSettings=gasp'
 
-set -U fish_user_paths '/home/efren/.config/emacs/bin/' $fish_user_paths
-
 # Set aliases
 alias ls="lsd -A"
+alias snvim="NVIM_APPNAME=nvim-stable nvim"
+alias nnvim="NVIM_APPNAME=nvim-nightly nvim"
 alias vi="nvim"
 alias grep="rg"
 alias cat="bat"
@@ -73,18 +74,17 @@ fzf --fish | source
 zoxide init --cmd cd fish | source
 
 if status is-interactive
-	# Run on start up
+    # Run on start up
     set terminal_type (fastfetch | rg "Terminal" | sed -n 's/.*Terminal => //p')
-    if test "$terminal_type" != "tmux"
+    if test "$terminal_type" != tmux
         fastfetch
     end
 end
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/home/efren/.opam/opam-init/init.fish' && source '/home/efren/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '/home/efren/.opam/opam-init/init.fish' && source '/home/efren/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
 # END opam configuration

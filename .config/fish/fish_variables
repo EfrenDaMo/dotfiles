@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export ANDROID_HOME:/opt/android\x2dsdk
 SETUVAR --export EDITOR:nvim
 SETUVAR FZF_COMPLETE:2
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
@@ -43,4 +44,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/efren/\x2econfig/emacs/bin/\x1e/home/efren/\x2econfig/emacs/bin/doom\x1e/home/efren/bin/
+SETUVAR fish_user_paths:/home/efren/\x2elocal/share/bob/nvim\x2dbin\x1e/home/efren/\x2econfig/emacs/bin\x1e/home/efren/\x2econfig/emacs/bin/\x1e/home/efren/bin/
