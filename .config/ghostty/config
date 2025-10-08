@@ -5,7 +5,7 @@ theme = /home/efren/dotfiles/.config/ghostty/themes/tokyonight_moon
 command = /usr/bin/fish
 
 # Set transparency
-background-opacity = .5
+# background-opacity = .5
 
 # Font config
 font-size = 13

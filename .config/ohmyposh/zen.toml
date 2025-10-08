@@ -80,7 +80,7 @@ foreground_templates = [
 	'{{ if eq .Code 0 }}magenta{{ end }}',
 ]
 background = 'transparent'
-template = ' '
+template = ' '
 
 [transient_prompt]
 template = ' '

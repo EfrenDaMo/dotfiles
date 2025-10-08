@@ -122,10 +122,14 @@ fi
 
 alias ls="lsd -A"
 alias vi="nvim"
+alias snvim="NVIM_APPNAME=nvim-stable nvim"
+alias nnvim="NVIM_APPNAME=nvim-nightly nvim"
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+export PATH="/home/efren/.local/share/bob/nvim-bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/efren/.sdkman"
