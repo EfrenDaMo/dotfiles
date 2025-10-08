@@ -17,6 +17,7 @@ local servers = {
     "marksman",
     "ocamllsp",
     "ols",
+    "qmlls",
     "ruff",
     "rust_analyzer",
     --"ts_ls",
