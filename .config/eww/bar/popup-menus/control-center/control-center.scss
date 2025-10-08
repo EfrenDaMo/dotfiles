@@ -5,7 +5,7 @@
 
   border: 1px solid;
   border-color: $foreground;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 .top-section {
@@ -15,7 +15,7 @@
 
   border: 1px solid;
   border-color: transparent;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 scale.brightness-slider {
@@ -45,6 +45,7 @@ scale.brightness-slider slider {
 
 .brightness-labels {
   color: $yellow;
+  margin-right: 7px;
 }
 
 scale.volume-slider {
@@ -73,6 +74,7 @@ scale.volume-slider slider {
 
 .volume-labels {
   color: $light-blue;
+  margin-right: 7px;
 }
 
 .center-section {
@@ -82,7 +84,7 @@ scale.volume-slider slider {
 
   border: 1px solid;
   border-color: transparent;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 .label {
@@ -99,7 +101,7 @@ scale.volume-slider slider {
 
   border: 1px solid;
   border-color: transparent;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 .indicator-container {

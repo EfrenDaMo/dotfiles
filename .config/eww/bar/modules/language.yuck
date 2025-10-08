@@ -1,6 +1,6 @@
 (defpoll get_layout 
   :interval "1s" 
-  "hyprctl devices -j | jq -r \".keyboards[4].active_keymap\" | cut -d\" \" -f1 | cut -c1-2"
+  "hyprctl devices -j | jq -r '.keyboards | map (select(.name == \"kanata\"))[0].active_keymap' | cut -c1-2"
 )
 
 (defwidget language []

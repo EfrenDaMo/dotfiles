@@ -5,5 +5,41 @@
 
   border: 1px solid;
   border-color: $foreground;
+  border-radius: 7px;
+}
+
+
+menu {
+  color: $foreground;
+  background-color: $background;
+  padding: 0px 10px;
+
+  border: 1px solid;
+  border-color: $foreground;
   border-radius: 15px;
+}
+
+menu>menuitem {
+  padding: 0.5rem 0.8rem;
+  transition: 0.1s;
+  border-radius: 1rem;
+}
+
+menu>menuitem:disabled {
+  color: $gray;
+  background-color: transparent;
+}
+
+menu>menuitem:hover {
+  color: $selection-foreground;
+  background-color: $selection-background;
+}
+
+menu separator {
+  background-color: $foreground;
+  padding-top: 0.06em;
+
+  &:last-child {
+    padding: unset;
+  }
 }
